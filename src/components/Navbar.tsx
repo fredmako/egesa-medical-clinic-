@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Menu, X, Phone, Stethoscope, Sun, Moon } from 'lucide-react'
+import { Menu, X, Phone, Sun, Moon } from 'lucide-react'
 import { useState } from 'react'
 import { site } from '../data/siteData'
 import { useTheme } from '../contexts/ThemeContext'
@@ -25,9 +25,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex items-center justify-between py-3">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-700 text-white">
-              <Stethoscope className="h-6 w-6" />
-            </div>
+            <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-10 w-10 rounded-xl object-cover" />
             <div>
               <p className="text-sm font-bold leading-tight text-slate-900 dark:text-white">
                 Egesa Medical Clinic

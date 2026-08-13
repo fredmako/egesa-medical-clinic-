@@ -4,18 +4,16 @@ import { site } from '../data/siteData'
 export default function Contact() {
   return (
     <div>
-      <section className="bg-slate-900 py-16 md:py-24">
+      <section className="section bg-white">
         <div className="container">
-          <h1 className="text-4xl font-bold md:text-5xl">Contact Us</h1>
-          <p className="mt-3 max-w-3xl text-slate-300">
-            We are here to help. Reach out to schedule appointments or ask questions.
-          </p>
-        </div>
-      </section>
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="text-4xl font-bold md:text-5xl">Contact Us</h1>
+            <p className="mt-3 text-slate-600">
+              We are here to help. Reach out to schedule appointments or ask questions.
+            </p>
+          </div>
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div>
               <div className="grid grid-cols-1 gap-4">
                 <div className="card flex items-start gap-4 p-5">
@@ -69,7 +67,17 @@ export default function Contact() {
             </div>
 
             <div>
-              <form className="card p-6">
+              <div className="card overflow-hidden p-0">
+                <iframe
+                  title="Egesa Medical Clinic map"
+                  src="https://www.google.com/maps?q=Egesa+Medical+Clinic+Kisii+Kenya&output=embed"
+                  className="h-64 w-full border-0 md:h-80"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+
+              <form className="card mt-6 p-6">
                 <h3 className="text-lg font-semibold">Send a Message</h3>
                 <div className="mt-4 grid grid-cols-1 gap-4">
                   <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="Full Name" />
@@ -79,6 +87,16 @@ export default function Contact() {
                   <button type="button" className="btn btn-primary w-full">Send Message</button>
                 </div>
               </form>
+
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold">Clinic Photos</h3>
+                <div className="mt-3 grid grid-cols-2 gap-3">
+                  <img src="/clinic-waiting.jpg" alt="Clinic waiting area" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
+                  <img src="/clinic-room.jpg" alt="Medical consultation room" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
+                  <img src="/clinic-door.jpg" alt="Clinic entrance" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
+                  <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

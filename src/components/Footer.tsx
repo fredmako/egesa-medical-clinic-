@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Stethoscope, Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 import { site } from '../data/siteData'
 
 export default function Footer() {
@@ -9,9 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-700 text-white">
-                <Stethoscope className="h-5 w-5" />
-              </div>
+              <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-9 w-9 rounded-lg object-cover" />
               <div>
                 <p className="text-sm font-bold text-white">Egesa Medical Clinic</p>
                 <p className="text-xs text-slate-400">Our Healthcare We Trust</p>
