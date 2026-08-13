@@ -31,8 +31,8 @@ const services = [
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.25),transparent_45%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.15),transparent_45%)]" />
         <div className="relative container py-16 md:py-28">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
             <div>
@@ -69,15 +69,15 @@ export default function Home() {
             <div className="relative">
               <div className="card overflow-hidden">
                 <img
-                  src="/hero.png"
+                  src="/clinic-door.jpg"
                   alt="Egesa Medical Clinic facility"
                   className="h-72 w-full object-cover md:h-80"
                 />
                 <div className="grid grid-cols-2 gap-4 p-5">
                   {stats.map((stat) => (
-                    <div key={stat.label} className="rounded-xl bg-slate-50 p-4">
-                      <p className="text-2xl font-extrabold text-slate-900">{stat.value}</p>
-                      <p className="text-xs text-slate-600">{stat.label}</p>
+                    <div key={stat.label} className="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+                      <p className="text-2xl font-extrabold text-slate-900 dark:text-white">{stat.value}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -87,11 +87,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-slate-950">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">Our Services</h2>
-            <p className="mt-3 text-slate-600">
+            <h2 className="text-3xl font-bold md:text-4xl text-slate-900 dark:text-white">Our Services</h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">
               Comprehensive healthcare services designed around your family's needs.
             </p>
           </div>
@@ -101,11 +101,11 @@ export default function Home() {
               <Link
                 key={item.title}
                 to={item.to}
-                className="card group flex h-full flex-col p-6 hover:border-sky-200"
+                className="card group flex h-full flex-col p-6 hover:border-sky-200 dark:hover:border-slate-700"
               >
                 <item.icon className="h-8 w-8 text-primary" />
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">{item.desc}</p>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-slate-600 dark:text-slate-300">{item.desc}</p>
                 <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
                   Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
@@ -115,23 +115,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-slate-50">
+      <section className="section bg-slate-50 dark:bg-slate-900">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-bold md:text-4xl">About Egesa Medical Clinic</h2>
-              <p className="mt-4 text-slate-700">{site.mission}</p>
-              <p className="mt-3 text-slate-700">{site.vision}</p>
+              <h2 className="text-3xl font-bold md:text-4xl text-slate-900 dark:text-white">About Egesa Medical Clinic</h2>
+              <p className="mt-4 text-slate-700 dark:text-slate-300">{site.mission}</p>
+              <p className="mt-3 text-slate-700 dark:text-slate-300">{site.vision}</p>
               <Link to="/about" className="mt-6 inline-flex items-center text-sm font-semibold text-primary">
                 More about us <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">Why Choose Us</h3>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Why Choose Us</h3>
               <ul className="mt-4 grid grid-cols-1 gap-3">
                 {['Quality Care', 'Affordable Fees', 'Accessible Location', 'Qualified Staff', 'Modern Equipment'].map((item) => (
-                  <li key={item} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 text-sm">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-primary">✓</span>
+                  <li key={item} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 text-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-primary dark:bg-slate-800">✓</span>
                     {item}
                   </li>
                 ))}
@@ -141,16 +141,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section bg-white">
+      <section className="section bg-white dark:bg-slate-950">
         <div className="container">
-          <h2 className="text-3xl font-bold md:text-4xl">Appointments & Booking</h2>
-          <p className="mt-3 max-w-3xl text-slate-600">
+          <h2 className="text-3xl font-bold md:text-4xl text-slate-900 dark:text-white">Appointments & Booking</h2>
+          <p className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
             We offer convenient booking options including online appointments, walk-ins, and reminders via SMS or WhatsApp.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
             {['Online Booking', 'Walk-in Booking', 'SMS Reminders', 'WhatsApp Reminders'].map((feature) => (
               <div key={feature} className="card p-5 text-center">
-                <p className="text-sm font-semibold text-slate-900">{feature}</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">{feature}</p>
               </div>
             ))}
           </div>
