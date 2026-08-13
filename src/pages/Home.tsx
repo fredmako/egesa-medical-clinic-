@@ -36,7 +36,7 @@ export default function Home() {
         <div className="relative container py-16 md:py-28">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              <p className="text-xs font-semibold uppercase tracking-wider text-secondary">
                 Egesa Medical Clinic
               </p>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white md:text-5xl">
@@ -56,11 +56,11 @@ export default function Home() {
               </div>
               <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-300">
                 <span className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-emerald-400" />
+                  <Phone className="h-4 w-4 text-secondary" />
                   0707 223 209
                 </span>
                 <span className="flex items-center gap-2">
-                  <Stethoscope className="h-4 w-4 text-emerald-400" />
+                  <Stethoscope className="h-4 w-4 text-secondary" />
                   Kisii, Kenya
                 </span>
               </div>
@@ -101,12 +101,12 @@ export default function Home() {
               <Link
                 key={item.title}
                 to={item.to}
-                className="card group flex h-full flex-col p-6 hover:border-emerald-200"
+                className="card group flex h-full flex-col p-6 hover:border-sky-200"
               >
-                <item.icon className="h-8 w-8 text-emerald-700" />
+                <item.icon className="h-8 w-8 text-primary" />
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-slate-600">{item.desc}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-semibold text-emerald-700">
+                <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
                   Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
@@ -122,7 +122,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold md:text-4xl">About Egesa Medical Clinic</h2>
               <p className="mt-4 text-slate-700">{site.mission}</p>
               <p className="mt-3 text-slate-700">{site.vision}</p>
-              <Link to="/about" className="mt-6 inline-flex items-center text-sm font-semibold text-emerald-700">
+              <Link to="/about" className="mt-6 inline-flex items-center text-sm font-semibold text-primary">
                 More about us <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -131,7 +131,7 @@ export default function Home() {
               <ul className="mt-4 grid grid-cols-1 gap-3">
                 {['Quality Care', 'Affordable Fees', 'Accessible Location', 'Qualified Staff', 'Modern Equipment'].map((item) => (
                   <li key={item} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 text-sm">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">✓</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-primary">✓</span>
                     {item}
                   </li>
                 ))}

@@ -17,34 +17,34 @@ export default function Contact() {
             <div>
               <div className="grid grid-cols-1 gap-4">
                 <div className="card flex items-start gap-4 p-5">
-                  <Phone className="mt-0.5 h-5 w-5 text-emerald-700" />
+                  <Phone className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-slate-900">Phone</p>
                     <div className="mt-1 flex flex-col gap-1">
-                      <a href={`tel:${site.phone.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-emerald-700">{site.phone}</a>
-                      <a href={`tel:${site.altPhone1.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-emerald-700">{site.altPhone1}</a>
-                      <a href={`tel:${site.altPhone2.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-emerald-700">{site.altPhone2}</a>
+                      <a href={`tel:${site.phone.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.phone}</a>
+                      <a href={`tel:${site.altPhone1.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.altPhone1}</a>
+                      <a href={`tel:${site.altPhone2.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.altPhone2}</a>
                     </div>
                   </div>
                 </div>
                 <div className="card flex items-start gap-4 p-5">
-                  <Mail className="mt-0.5 h-5 w-5 text-emerald-700" />
+                  <Mail className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-slate-900">Email</p>
-                    <a href="mailto:ceoegesamedicalclinic@gmail.com" className="text-sm text-slate-700 hover:text-emerald-700">
+                    <a href="mailto:ceoegesamedicalclinic@gmail.com" className="text-sm text-slate-700 hover:text-primary">
                       {site.email}
                     </a>
                   </div>
                 </div>
                 <div className="card flex items-start gap-4 p-5">
-                  <MapPin className="mt-0.5 h-5 w-5 text-emerald-700" />
+                  <MapPin className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-slate-900">Location</p>
                     <p className="text-sm text-slate-700">{site.location}</p>
                   </div>
                 </div>
                 <div className="card flex items-start gap-4 p-5">
-                  <Clock className="mt-0.5 h-5 w-5 text-emerald-700" />
+                  <Clock className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
                     <p className="text-sm font-semibold text-slate-900">Opening Hours</p>
                     <p className="text-sm text-slate-700">Mon–Fri: 8AM – 5PM</p>
@@ -58,7 +58,7 @@ export default function Contact() {
                   href="https://wa.me/254707223209"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary-dark"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Chat on WhatsApp
@@ -80,10 +80,10 @@ export default function Contact() {
               <form className="card mt-6 p-6">
                 <h3 className="text-lg font-semibold">Send a Message</h3>
                 <div className="mt-4 grid grid-cols-1 gap-4">
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="Full Name" />
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="Phone Number" />
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="Email" />
-                  <textarea rows={5} className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="Your Message" />
+                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Full Name" />
+                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Phone Number" />
+                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Email" />
+                  <textarea rows={5} className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Your Message" />
                   <button type="button" className="btn btn-primary w-full">Send Message</button>
                 </div>
               </form>

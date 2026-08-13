@@ -48,23 +48,23 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white">Contact Us</h3>
             <ul className="mt-3 space-y-2">
               <li className="flex items-start gap-2 text-sm text-slate-300">
-                <Phone className="mt-0.5 h-4 w-4 text-emerald-400" />
+                <Phone className="mt-0.5 h-4 w-4 text-secondary" />
                 <a href={`tel:${site.phone.replace(/ /g,'')}`}>{site.phone}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
-                <Phone className="mt-0.5 h-4 w-4 text-emerald-400" />
+                <Phone className="mt-0.5 h-4 w-4 text-secondary" />
                 <a href={`tel:${site.altPhone1.replace(/ /g,'')}`}>{site.altPhone1}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
-                <Phone className="mt-0.5 h-4 w-4 text-emerald-400" />
+                <Phone className="mt-0.5 h-4 w-4 text-secondary" />
                 <a href={`tel:${site.altPhone2.replace(/ /g,'')}`}>{site.altPhone2}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
-                <Mail className="mt-0.5 h-4 w-4 text-emerald-400" />
+                <Mail className="mt-0.5 h-4 w-4 text-secondary" />
                 <a href="mailto:ceoegesamedicalclinic@gmail.com">{site.email}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
-                <MapPin className="mt-0.5 h-4 w-4 text-emerald-400" />
+                <MapPin className="mt-0.5 h-4 w-4 text-secondary" />
                 <span>Kisii, Kenya</span>
               </li>
             </ul>
@@ -73,7 +73,7 @@ export default function Footer() {
               href="https://wa.me/254707223209"
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp Us

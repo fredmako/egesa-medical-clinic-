@@ -23,9 +23,9 @@ export default function Appointment() {
               <p className="mt-2 text-slate-600">Fill in the form and we will confirm your appointment.</p>
 
               {submitted ? (
-                <div className="card mt-6 border-emerald-200 bg-emerald-50 p-6">
+                <div className="card mt-6 border-sky-200 bg-emerald-50 p-6">
                   <h3 className="text-lg font-semibold text-emerald-900">Booking Request Sent</h3>
-                  <p className="mt-2 text-sm text-emerald-800">
+                  <p className="mt-2 text-sm text-primary-dark">
                     Thank you. We will confirm via phone or WhatsApp shortly.
                   </p>
                 </div>
@@ -40,15 +40,15 @@ export default function Appointment() {
                   <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Full Name</label>
-                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="John Doe" />
+                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="John Doe" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Phone Number</label>
-                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" placeholder="07XX XXX XXX" />
+                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="07XX XXX XXX" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Service / Department</label>
-                      <select className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700">
+                      <select className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary">
                         <option>Mother & Child Health</option>
                         <option>Family Planning</option>
                         <option>Medical Clinic</option>
@@ -62,15 +62,15 @@ export default function Appointment() {
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Preferred Date</label>
-                      <input type="date" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" />
+                      <input type="date" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Preferred Time</label>
-                      <input type="time" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" />
+                      <input type="time" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Notes (optional)</label>
-                      <textarea rows={3} className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-emerald-700" />
+                      <textarea rows={3} className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
                     </div>
                     <button type="submit" className="btn btn-primary">
                       Submit Booking Request <ArrowRight className="ml-2 h-4 w-4" />
@@ -90,7 +90,7 @@ export default function Appointment() {
                   { icon: MessageSquare, title: 'SMS / WhatsApp Reminders', desc: 'We send reminders for follow-up visits.' },
                 ].map((item) => (
                   <div key={item.title} className="card flex items-start gap-4 p-5">
-                    <item.icon className="mt-0.5 h-5 w-5 text-emerald-700" />
+                    <item.icon className="mt-0.5 h-5 w-5 text-primary" />
                     <div>
                       <p className="text-sm font-semibold text-slate-900">{item.title}</p>
                       <p className="text-sm text-slate-600">{item.desc}</p>

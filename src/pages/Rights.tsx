@@ -7,7 +7,7 @@ export default function Rights() {
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <div className="flex items-center gap-3">
-            <ShieldCheck className="h-8 w-8 text-emerald-400" />
+            <ShieldCheck className="h-8 w-8 text-secondary" />
             <h1 className="text-4xl font-bold md:text-5xl">Patient Rights</h1>
           </div>
           <p className="mt-3 max-w-3xl text-slate-300">
@@ -22,7 +22,7 @@ export default function Rights() {
             {patientRights.map((right) => (
               <div key={right.title} className="card p-5">
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                  <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-primary">
                     <CheckCircle2 className="h-5 w-5" />
                   </span>
                   <div>

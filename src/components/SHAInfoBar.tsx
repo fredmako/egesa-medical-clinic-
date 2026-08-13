@@ -2,7 +2,7 @@ import { ShieldCheck } from 'lucide-react'
 
 export default function SHAInfoBar() {
   return (
-    <div className="bg-emerald-700 text-white">
+    <div className="bg-primary text-white">
       <div className="container py-2">
         <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2 text-sm">

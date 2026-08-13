@@ -5,7 +5,7 @@ const dayColors: Record<string, string> = {
   Sunday: 'bg-rose-50 text-rose-900 border-rose-200',
   Monday: 'bg-sky-50 text-sky-900 border-sky-200',
   Tuesday: 'bg-amber-50 text-amber-900 border-amber-200',
-  Wednesday: 'bg-emerald-50 text-emerald-900 border-emerald-200',
+  Wednesday: 'bg-emerald-50 text-emerald-900 border-sky-200',
   Thursday: 'bg-violet-50 text-violet-900 border-violet-200',
   Friday: 'bg-orange-50 text-orange-900 border-orange-200',
   'Daily (8AM–1PM)': 'bg-slate-100 text-slate-900 border-slate-200',

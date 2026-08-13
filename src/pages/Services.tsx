@@ -7,9 +7,9 @@ import {
 import { motherChildServices, familyPlanningServices } from '../data/siteData'
 
 const departments = [
-  { title: 'Mother & Child Health', desc: 'Comprehensive maternal, newborn, and child health services.', icon: HeartPulse, to: '#mch', color: 'text-emerald-700', bg: 'bg-emerald-50' },
-  { title: 'Family Planning', desc: 'Modern contraception counseling and methods.', icon: Heart, to: '#fp', color: 'text-emerald-700', bg: 'bg-emerald-50' },
-  { title: 'General Services', desc: 'Health screenings, consultations, and specialized clinics.', icon: Activity, to: '#general', color: 'text-emerald-700', bg: 'bg-emerald-50' },
+  { title: 'Mother & Child Health', desc: 'Comprehensive maternal, newborn, and child health services.', icon: HeartPulse, to: '#mch', color: 'text-primary', bg: 'bg-emerald-50' },
+  { title: 'Family Planning', desc: 'Modern contraception counseling and methods.', icon: Heart, to: '#fp', color: 'text-primary', bg: 'bg-emerald-50' },
+  { title: 'General Services', desc: 'Health screenings, consultations, and specialized clinics.', icon: Activity, to: '#general', color: 'text-primary', bg: 'bg-emerald-50' },
 ] as const
 
 export default function Services() {
@@ -31,14 +31,14 @@ export default function Services() {
               <a
                 key={item.title}
                 href={item.to}
-                className="card flex flex-col p-6 hover:border-emerald-200"
+                className="card flex flex-col p-6 hover:border-sky-200"
               >
                 <div className={`${item.bg} flex h-12 w-12 items-center justify-center rounded-xl ${item.color}`}>
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-semibold text-emerald-700">
+                <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
                   View services <ArrowRight className="ml-2 h-4 w-4" />
                 </span>
               </a>
@@ -60,7 +60,7 @@ export default function Services() {
                 {service.note && <p className="mt-1 text-xs text-slate-500">{service.note}</p>}
                 <div className="mt-3 flex items-center justify-between text-xs text-slate-600">
                   <span>⏱ {service.time}</span>
-                  <span className={service.free ? 'text-emerald-700 font-semibold' : 'font-semibold'}>{service.fee}</span>
+                  <span className={service.free ? 'text-primary font-semibold' : 'font-semibold'}>{service.fee}</span>
                 </div>
               </div>
             ))}

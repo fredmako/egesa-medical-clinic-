@@ -30,7 +30,7 @@ export default function FamilyPlanning() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {sections.map((item) => (
               <div key={item.label} className="card p-5">
-                <Heart className="h-6 w-6 text-emerald-700" />
+                <Heart className="h-6 w-6 text-primary" />
                 <h3 className="mt-3 text-sm font-semibold text-slate-900">{item.label}</h3>
                 <p className="mt-2 text-xs text-slate-600">{item.desc}</p>
               </div>
@@ -56,7 +56,7 @@ export default function FamilyPlanning() {
                     <h3 className="text-lg font-semibold text-slate-900">{method.name}</h3>
                     <p className="mt-2 text-sm text-slate-700">{method.description}</p>
                   </div>
-                  <ShieldCheck className="h-5 w-5 text-emerald-700" />
+                  <ShieldCheck className="h-5 w-5 text-primary" />
                 </div>
                 <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
                   <div>

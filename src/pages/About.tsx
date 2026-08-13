@@ -36,7 +36,7 @@ export default function About() {
               <ul className="mt-4 grid grid-cols-1 gap-3">
                 {[...coreValues].map((value) => (
                   <li key={value} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 font-bold">✓</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-primary font-bold">✓</span>
                     <span className="font-semibold text-slate-900">{value}</span>
                   </li>
                 ))}
@@ -55,7 +55,7 @@ export default function About() {
           <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
             {highlights.map((item) => (
               <div key={item.title} className="card p-6">
-                <item.icon className="h-8 w-8 text-emerald-700" />
+                <item.icon className="h-8 w-8 text-primary" />
                 <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
               </div>

@@ -27,7 +27,7 @@ export default function Laboratory() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search tests..."
-                className="w-full rounded-lg border border-slate-300 bg-white px-9 py-2 text-sm outline-none focus:border-emerald-700"
+                className="w-full rounded-lg border border-slate-300 bg-white px-9 py-2 text-sm outline-none focus:border-primary"
               />
               {query && (
                 <button onClick={() => setQuery('')} className="absolute right-3 top-2.5 text-slate-500">
@@ -57,7 +57,7 @@ export default function Laboratory() {
                 <>
                   <div key={`${item.name}-name`} className="md:col-span-4 p-4 text-sm font-medium text-slate-900">
                     <span className="flex items-center gap-2">
-                      <FlaskConical className="h-4 w-4 text-emerald-700" />
+                      <FlaskConical className="h-4 w-4 text-primary" />
                       {item.name}
                     </span>
                   </div>

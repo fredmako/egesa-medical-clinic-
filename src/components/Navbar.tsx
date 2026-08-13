@@ -47,7 +47,7 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <a href={`tel:${site.phone.replace(/ /g,'')}`} className="flex items-center gap-2 text-sm font-medium text-emerald-800 dark:text-emerald-300">
+            <a href={`tel:${site.phone.replace(/ /g,'')}`} className="flex items-center gap-2 text-sm font-medium text-primary-dark dark:text-secondary">
               <Phone className="h-4 w-4" />
               {site.phone}
             </a>
@@ -61,7 +61,7 @@ export default function Navbar() {
             </button>
             <Link
               to="/appointment"
-              className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
             >
               Book Now
             </Link>
@@ -95,14 +95,14 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a href={`tel:${site.phone.replace(/ /g,'')}`} className="mt-2 flex items-center gap-2 rounded-lg bg-emerald-50 dark:bg-emerald-950 px-3 py-2 text-sm font-medium text-emerald-800 dark:text-emerald-300">
+            <a href={`tel:${site.phone.replace(/ /g,'')}`} className="mt-2 flex items-center gap-2 rounded-lg bg-emerald-50 dark:bg-primary-dark px-3 py-2 text-sm font-medium text-primary-dark dark:text-secondary">
               <Phone className="h-4 w-4" />
               {site.phone}
             </a>
             <Link
               to="/appointment"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800"
+              className="mt-2 flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
             >
               Book Now
             </Link>

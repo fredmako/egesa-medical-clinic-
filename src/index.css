@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-primary: #dc2626;
+  --color-primary-dark: #b91c1c;
+  --color-secondary: #38bdf8;
+  --color-accent: #10b981;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -34,12 +41,12 @@
     @apply border-slate-800 bg-slate-900 text-slate-100;
   }
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
   }
   .btn-primary {
-    @apply bg-emerald-700 text-white hover:bg-emerald-800;
+    @apply bg-primary text-white hover:bg-primary-dark;
   }
   .btn-secondary {
-    @apply border border-emerald-700 text-emerald-800 hover:bg-emerald-50;
+    @apply border border-primary text-primary hover:bg-red-50;
   }
 }
