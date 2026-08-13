@@ -1,0 +1,172 @@
+export const site = {
+  name: 'Egesa Medical Clinic',
+  tagline: 'Our Healthcare We Trust',
+  mission:
+    'To provide quality, promotive, preventive, curative healthcare which are available, accessible, affordable and sustainable to our people.',
+  vision:
+    'To be a centre of excellence in the provision of quality healthcare services in the community.',
+  phone: '0707 223 209',
+  altPhone1: '0780 006 695',
+  altPhone2: '0717 773 048',
+  email: 'ceoegesamedicalclinic@gmail.com',
+  location: 'Kisii, Kenya',
+} as const
+
+export const coreValues = [
+  'Professionalism',
+  'Compassion',
+  'Integrity',
+  'Excellence',
+  'Confidentiality',
+] as const
+
+export const motherChildServices = [
+  { name: 'Child Registration for CWC', time: '20 Minutes', fee: 'KES 50', free: false as boolean, note: '' },
+  { name: 'Body Weight, Height & BMI Monitoring', time: '5 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Vaccination / Immunization', time: '10 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Mother & Child Vitamin A Administration', time: '10 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Birth Notification Issuance', time: '5 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'LLITN Distribution', time: '5 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'PMTCT ARV Prophylaxis', time: '10 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Deworming', time: 'Varies', fee: 'KES 50', free: false, note: 'Mebendazole 500mg / Albendazole 200mg for age 1–2; Albendazole 400mg above 2 years' },
+  { name: 'HIV Counselling & Testing (PMTCT)', time: '10 Minutes', fee: 'Free for Tiko registered members', free: true, note: 'Free for Tiko registered members' },
+  { name: 'Health Education Programmes', time: '30 Minutes', fee: 'Free', free: true, note: 'EBF, Family Planning, Maternal Health' },
+  { name: 'Pre-Conception Care Registration', time: '30 Minutes', fee: 'Varies', free: false, note: '' },
+  { name: 'Cervical Cancer Screening', time: '30 Minutes', fee: 'KES 500', free: false, note: '' },
+  { name: 'TB Screening', time: '30 Minutes', fee: 'Free for SHA patients', free: true, note: 'Free for SHA patients' },
+  { name: 'Antenatal Clinic Registration', time: '10 Minutes', fee: 'KES 500', free: false, note: '' },
+  { name: 'Breast Cancer Screening', time: '10 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Child Disability Identification', time: '10 Minutes', fee: 'Free', free: true, note: '' },
+  { name: 'Postnatal Mother Examination', time: '5 Minutes', fee: 'Free', free: true, note: '' },
+] as const
+
+export const familyPlanningServices = [
+  { name: 'Combined Oral Contraceptive Pills (COC)', time: '10 Minutes', fee: 'KES 150', free: false },
+  { name: 'Progesterone Only Pills (POP)', time: '10 Minutes', fee: 'KES 150', free: false },
+  { name: 'Depo Provera', time: '20 Minutes', fee: 'KES 150', free: false },
+  { name: 'Implants - Implanon 68mg Etonogestrel', time: '25 Minutes', fee: 'KES 500', free: false },
+  { name: 'Implants - Jadelle', time: '25 Minutes', fee: 'KES 750', free: false },
+  { name: 'Emergency Contraceptive Pills', time: '30 Minutes', fee: 'KES 150–200', free: false },
+  { name: 'IUCD', time: '10 Minutes', fee: 'KES 1000', free: false },
+  { name: 'Male Condoms', time: '10 Minutes', fee: 'KES 50–100', free: false },
+  { name: 'Female Condoms', time: '30 Minutes', fee: 'KES 50', free: false },
+  { name: 'Natural Family Planning Counselling', time: '30 Minutes', fee: 'KES 50', free: false },
+  { name: 'Cycle Beads', time: '10 Minutes', fee: 'KES 100', free: false },
+  { name: 'HIV Counselling & Testing', time: '20 Minutes', fee: 'KES 100', free: false },
+  { name: 'Cervical Cancer Screening', time: '30 Minutes', fee: 'KES 500', free: false },
+] as const
+
+export const labServices = [
+  { name: 'Malaria Tests', cost: 'KES 300', turnaround: '4 hours' },
+  { name: 'Widal Tests', cost: 'KES 200', turnaround: 'Same day' },
+  { name: 'Urinalysis', cost: 'KES 150', turnaround: '2 hours' },
+  { name: 'Pregnancy Test', cost: 'KES 100', turnaround: '1 hour' },
+  { name: 'HIV Rapid Test', cost: 'Free', turnaround: '30 mins' },
+  { name: 'Random Blood Sugar', cost: 'KES 100', turnaround: '1 hour' },
+  { name: 'Fasting Blood Sugar', cost: 'KES 120', turnaround: '4 hours' },
+  { name: 'Haemoglobin', cost: 'KES 150', turnaround: '2 hours' },
+  { name: 'Full Haemogram', cost: 'KES 400', turnaround: 'Same day' },
+  { name: 'Blood Grouping', cost: 'KES 200', turnaround: '2 hours' },
+  { name: 'Rheumatoid Factor', cost: 'KES 450', turnaround: 'Same day' },
+  { name: 'Hepatitis A', cost: 'KES 500', turnaround: 'Same day' },
+  { name: 'Hepatitis B', cost: 'KES 500', turnaround: 'Same day' },
+  { name: 'Hepatitis C', cost: 'KES 600', turnaround: 'Same day' },
+  { name: 'PSA', cost: 'KES 900', turnaround: '2 days' },
+  { name: 'Liver Function Test', cost: 'KES 700', turnaround: 'Same day' },
+  { name: 'Renal Function Test', cost: 'KES 700', turnaround: 'Same day' },
+  { name: 'ANC Profile', cost: 'KES 1200', turnaround: 'Same day' },
+  { name: 'Blood Pressure', cost: 'Free', turnaround: 'Instant' },
+  { name: 'BMI Assessment', cost: 'Free', turnaround: 'Instant' },
+] as const
+
+export const specialSchedule = [
+  { day: 'Sunday', clinics: ['Drug & Substance Abuse Counselling', 'Teenage Pregnancy Counselling', 'FGM Outreach Services'] },
+  { day: 'Monday', clinics: ['Medical Clinic', 'Surgical Clinic'] },
+  { day: 'Tuesday', clinics: ['Dental Clinic'] },
+  { day: 'Wednesday', clinics: ['Diabetic Clinic', 'Hypertension Clinic'] },
+  { day: 'Thursday', clinics: ['STI Clinic'] },
+  { day: 'Friday', clinics: ['Eye Clinic', 'Ear Clinic'] },
+  { day: 'Daily (8AM–1PM)', clinics: ['Mother & Child Health Clinic'] },
+] as const
+
+export const patientRights = [
+  { title: 'Right to respectful care', desc: 'Every patient deserves to be treated with dignity and respect.' },
+  { title: 'Right to family representation', desc: 'Patients may have a family member present for support.' },
+  { title: 'Right to know attending healthcare professionals', desc: 'You are entitled to know the names and roles of your caregivers.' },
+  { title: 'Right to health information', desc: 'Access clear information about your health status and treatment.' },
+  { title: 'Right to participate in treatment decisions', desc: 'You may take part in decisions regarding your care plan.' },
+  { title: 'Right to accept or refuse treatment', desc: 'You may consent to or decline proposed medical interventions.' },
+  { title: 'Right to continuity of care', desc: 'Continuity and coordination of your healthcare is ensured.' },
+  { title: 'Right to discharge planning information', desc: 'You will receive guidance for care after leaving the facility.' },
+  { title: 'Right to privacy and confidentiality', desc: 'Your medical information is protected and confidential.' },
+  { title: 'Right to grievance resolution', desc: 'You may raise concerns and expect a fair response.' },
+  { title: 'Right to freedom from unnecessary restraint', desc: 'You will not be subjected to unnecessary physical or chemical restraints.' },
+  { title: 'Right to leave the facility subject to legal requirements', desc: 'You may leave after acknowledging risks and requirements.' },
+] as const
+
+export const fpEducation = [
+  {
+    name: 'Injectable Contraceptives',
+    description: 'Hormonal injections given every 2–3 months by a trained provider.',
+    benefits: 'Highly effective, private, no daily action needed.',
+    sideEffects: 'Irregular bleeding, weight change, delayed return to fertility.',
+    effectiveness: 'More than 99% effective with correct use.',
+    eligibility: 'Most women can use injectables; screening done at clinic.',
+  },
+  {
+    name: 'Condoms',
+    description: 'Barrier method used during intercourse to prevent pregnancy and STIs.',
+    benefits: 'Protects against STIs, widely available, no prescription needed.',
+    sideEffects: 'Possible irritation or allergic reaction.',
+    effectiveness: '85–98% effective with typical use.',
+    eligibility: 'Suitable for almost everyone.',
+  },
+  {
+    name: 'IUCD',
+    description: 'A small T-shaped device placed in the uterus by a trained clinician.',
+    benefits: 'Long-acting reversible, very effective, low maintenance.',
+    sideEffects: 'Cramping, spotting, rare perforation or expulsion.',
+    effectiveness: 'More than 99% effective.',
+    eligibility: 'Suitable for most women; pelvic exam required.',
+  },
+  {
+    name: 'Implants',
+    description: 'Small flexible rods placed under the skin releasing progestogen.',
+    benefits: 'Long-lasting, very effective, reversible, private.',
+    sideEffects: 'Irregular bleeding, mood changes, removal requires minor procedure.',
+    effectiveness: 'More than 99% effective.',
+    eligibility: 'Most women are eligible; minor procedure required for insertion/removal.',
+  },
+  {
+    name: 'POP Pills',
+    description: 'A daily pill containing only progestogen hormone.',
+    benefits: 'Safe while breastfeeding, no estrogen-related risks.',
+    sideEffects: 'Irregular periods, spotting, must be taken at the same time daily.',
+    effectiveness: '91–99% effective.',
+    eligibility: 'Suitable for breastfeeding mothers and many others.',
+  },
+  {
+    name: 'Emergency Pills',
+    description: 'Pills taken within 72–120 hours after unprotected sex.',
+    benefits: 'Effective backup method, prevents unintended pregnancy.',
+    sideEffects: 'Nausea, fatigue, temporary cycle changes.',
+    effectiveness: '85–95% effective if taken early.',
+    eligibility: 'Can be used by most women as an emergency measure.',
+  },
+  {
+    name: 'Fertility Awareness Methods',
+    description: 'Tracking menstrual cycle to identify fertile days.',
+    benefits: 'No devices or hormones, promotes body awareness.',
+    sideEffects: 'No medical side effects.',
+    effectiveness: '76–88% effective with typical use.',
+    eligibility: 'Requires regular cycles and disciplined tracking.',
+  },
+  {
+    name: 'Lactational Amenorrhea Method',
+    description: 'Using exclusive breastfeeding as temporary contraception.',
+    benefits: 'Free, convenient, supports infant nutrition.',
+    sideEffects: 'Only effective under strict breastfeeding conditions.',
+    effectiveness: '98% effective in first 6 months if criteria met.',
+    eligibility: 'Postpartum women exclusively breastfeeding and amenorrheic.',
+  },
+] as const
