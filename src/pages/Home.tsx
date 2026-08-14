@@ -178,7 +178,7 @@ export default function Home() {
             <img
               src="/sha-logo.png"
               alt="Social Health Authority (SHA) Kenya logo"
-              className="h-14 w-auto shrink-0 rounded-md bg-white p-1 dark:bg-white"
+              className="h-12 w-auto shrink-0 rounded-md bg-slate-900 p-2"
               width={422}
               height={90}
             />
