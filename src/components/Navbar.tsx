@@ -39,10 +39,10 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
         {/* Row 1: logo + name (left) | hamburger + single primary CTA (right) */}
         <div className="flex items-center justify-between py-1.5">
           <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Egesa Medical Clinic home">
-            <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-8 w-8 shrink-0 rounded-lg object-cover" />
+            <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-9 w-9 shrink-0 rounded-lg object-cover" />
             <div className="min-w-0">
-              <p className="truncate text-[15px] font-semibold leading-tight text-slate-900 dark:text-white sm:text-base">Egesa Medical Clinic</p>
-              <p className="truncate text-xs text-slate-500 dark:text-slate-300">{site.tagline}</p>
+              <p className="truncate text-lg font-semibold leading-tight text-slate-900 dark:text-white sm:text-xl">Egesa Medical Clinic</p>
+              <p className="truncate text-xs text-slate-500 dark:text-slate-300 sm:text-sm">{site.tagline}</p>
             </div>
           </Link>
 
