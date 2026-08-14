@@ -217,6 +217,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SHA ACCREDITATION */}
+      <section className="section bg-white dark:bg-slate-950" aria-label="SHA accreditation">
+        <div className="container">
+          <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20">
+              <ShieldCheck className="h-10 w-10 text-primary" aria-hidden="true" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">SHA Accredited Facility</h2>
+              <p className="mt-2 text-slate-600 dark:text-slate-300">
+                Egesa Medical Clinic is accredited by the Social Health Authority (SHA), Kenya's national health
+                regulator. We meet the required standards for safe, quality and accountable care — so your family is
+                covered under the Social Health Insurance Fund (SHIF).
+              </p>
+              <p className="mt-3 text-sm font-semibold text-primary">Registered &amp; compliant with Kenya's Health Act 2017</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section bg-slate-50 dark:bg-slate-900">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
