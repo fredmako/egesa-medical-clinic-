@@ -99,15 +99,16 @@ export default function Home() {
             />
           ))}
         </div>
-        {/* 60% dark overlay for WCAG-compliant text contrast */}
-        <div className="absolute inset-0 bg-slate-900/60" />
+        {/* Deep theme-tinted overlay — boosts text contrast over facility photos */}
+        <div className="absolute inset-0 bg-slate-900/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-slate-900/30 to-slate-950/60" />
 
         <div className="relative container py-10 md:py-16">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-emerald-300">
               {site.name}
             </p>
-            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] sm:text-4xl md:text-5xl">
               Quality Healthcare For Every Family
             </h1>
             <p className="mt-4 text-base font-medium text-slate-100 sm:text-lg">
