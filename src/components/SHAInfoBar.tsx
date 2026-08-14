@@ -10,8 +10,13 @@ export default function SHAInfoBar() {
             <span className="font-semibold">SHA/NHIF Accepted</span>
             <span className="text-emerald-100">• Most services free for registered SHA patients</span>
           </div>
-          <div className="text-xs text-emerald-100 md:text-sm">
-            Tiko registered members: free HIV counselling/testing • All pills: KES 150
+          <div className="flex items-center gap-3 text-xs text-emerald-100 md:text-sm">
+            <span className="flex items-center gap-1.5">
+              <img src="/logo.jpg" alt="SHA" className="h-5 w-5 rounded-full object-cover ring-1 ring-white/40" />
+              Accredited by SHA
+            </span>
+            <span className="hidden sm:inline">•</span>
+            <span>Open 24 hours — Sunday to Sunday</span>
           </div>
         </div>
       </div>

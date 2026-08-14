@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import {
   Stethoscope,
   CalendarCheck,
@@ -11,6 +12,20 @@ import {
   Phone,
 } from 'lucide-react'
 import { site } from '../data/siteData'
+
+// Downloaded clinic images — continuous 2s crossfade carousel in the hero.
+const heroSlides = [
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.05 PM.jpeg', caption: 'Welcoming entrance & reception' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.08 PM (1).jpeg', caption: 'Modern consultation rooms' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.08 PM.jpeg', caption: 'Comfortable waiting area' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM (1).jpeg', caption: 'Laboratory & diagnostics' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM (2).jpeg', caption: 'Dedicated treatment bays' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM.jpeg', caption: 'Qualified clinical staff' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.10 PM.jpeg', caption: 'Family & child wellness' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.11 PM (1).jpeg', caption: 'Private consultation' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.11 PM.jpeg', caption: 'Patient care in action' },
+  { src: '/WhatsApp Image 2026-08-13 at 5.53.13 PM.jpeg', caption: 'Community health services' },
+]
 
 const stats = [
   { label: 'Years of Service', value: '12+' },
@@ -29,6 +44,11 @@ const services = [
 ]
 
 export default function Home() {
+  const [slide, setSlide] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setSlide((i) => (i + 1) % heroSlides.length), 2000)
+    return () => clearInterval(id)
+  }, [])
   return (
     <div>
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800">
@@ -68,11 +88,20 @@ export default function Home() {
 
             <div className="relative">
               <div className="card overflow-hidden">
-                <img
-                  src="/clinic-door.jpg"
-                  alt="Egesa Medical Clinic facility"
-                  className="h-72 w-full object-cover md:h-80"
-                />
+                <div className="relative h-72 w-full md:h-80">
+                  {heroSlides.map((s, i) => (
+                    <img
+                      key={s.src}
+                      src={s.src}
+                      alt={s.caption}
+                      className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000"
+                      style={{ opacity: i === slide ? 1 : 0 }}
+                    />
+                  ))}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4">
+                    <p className="text-sm font-medium text-white drop-shadow">{heroSlides[slide].caption}</p>
+                  </div>
+                </div>
                 <div className="grid grid-cols-2 gap-4 p-5">
                   {stats.map((stat) => (
                     <div key={stat.label} className="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import SHAInfoBar from './components/SHAInfoBar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <Router>
       <div className="flex min-h-screen flex-col">
+        <SHAInfoBar />
         <Navbar />
         <main className="flex-1">
           <Routes>
