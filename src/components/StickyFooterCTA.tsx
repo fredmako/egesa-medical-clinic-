@@ -13,7 +13,7 @@ export default function StickyFooterCTA() {
       role="region"
       aria-label="Quick actions"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <a
           href={`tel:${site.phone.replace(/ /g, '')}`}
           className="btn min-h-[44px] flex-1 justify-center border border-primary text-primary hover:bg-red-50 dark:hover:bg-slate-800"

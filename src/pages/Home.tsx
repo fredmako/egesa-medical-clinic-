@@ -99,7 +99,7 @@ export default function Home() {
               </li>
             </ul>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
               <Link
                 to="/appointment"
                 className="btn btn-primary min-h-[48px] w-full justify-center sm:w-auto"
