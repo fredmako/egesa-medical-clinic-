@@ -12,6 +12,9 @@ import {
   Phone,
   MapPin,
   Star,
+  TestTube,
+  GraduationCap,
+  HeartHandshake,
 } from 'lucide-react'
 import { site } from '../data/siteData'
 
@@ -59,6 +62,14 @@ export default function Home() {
     { src: '/hero-new4.jpg', alt: 'Egesa Medical Clinic treatment room' },
     { src: '/hero-new5.jpg', alt: 'Egesa Medical Clinic waiting area' },
     { src: '/hero-new6.jpg', alt: 'Egesa Medical Clinic facility interior' },
+  ]
+  const freeServices = [
+    { icon: TestTube, title: 'Free HIV Testing & Counselling', desc: 'Confidential testing with professional counselling and support.' },
+    { icon: HeartPulse, title: 'Free HIV Care & Treatment', desc: 'Ongoing care, treatment, and follow-up for people living with HIV.' },
+    { icon: Users, title: 'Free Family Planning Counselling', desc: 'Guidance on contraceptive options and reproductive health.' },
+    { icon: GraduationCap, title: 'Free Community Health Education', desc: 'Outreach and sessions on prevention, nutrition, and wellness.' },
+    { icon: Activity, title: 'Free Preventive Health Screening', desc: 'Early checks for blood pressure, sugar, and common conditions.' },
+    { icon: HeartHandshake, title: 'SHA Supported Primary Care', desc: 'Affordable primary care covered under the Social Health Authority.' },
   ]
   const n = heroSlides.length
   const [slide, setSlide] = useState(0)
@@ -168,27 +179,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SHA ACCREDITATION — top-line credibility, right under hero */}
-      <section
-        className="border-b border-slate-200 bg-white py-6 dark:border-slate-800 dark:bg-slate-950"
-        aria-label="SHA accreditation"
-      >
+      {/* TRUST & COMMUNITY HEALTHCARE — patient-focused, replaces standalone SHA block */}
+      <section className="border-b border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-slate-950" aria-label="Community healthcare you can trust">
         <div className="container">
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-            <img
-              src="/sha-logo.png"
-              alt="Social Health Authority (SHA) Kenya logo"
-              className="h-12 w-auto shrink-0 rounded-md bg-slate-900 p-2"
-              width={422}
-              height={90}
-            />
-            <div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">SHA Accredited Facility</h2>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                Accredited by the Social Health Authority (SHA), Kenya's national health regulator — your family is
-                covered under the Social Health Insurance Fund (SHIF). Registered &amp; compliant with Kenya's Health Act 2017.
-              </p>
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Small SHA accreditation badge */}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+              <img src="/sha-logo.png" alt="Social Health Authority (SHA) Kenya" className="h-5 w-auto rounded bg-slate-900 p-0.5" width={422} height={90} />
+              <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">SHA Accredited</span>
             </div>
+
+            <h2 className="text-3xl font-bold md:text-4xl text-slate-900 dark:text-white">Community Healthcare You Can Trust</h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">
+              Quality, affordable and accessible care for every family in Kisii and beyond. From free preventive services
+              to SHA-supported primary care, we're here to keep your community healthy — without the financial worry.
+            </p>
+          </div>
+
+          {/* Free services grid */}
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {freeServices.map((s) => (
+              <div key={s.title} className="card flex h-full flex-col p-5">
+                <s.icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                <h3 className="mt-3 text-base font-semibold text-slate-900 dark:text-white">{s.title}</h3>
+                <p className="mt-1 flex-1 text-sm text-slate-600 dark:text-slate-300">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link to="/appointment" className="btn btn-primary w-full sm:w-auto">
+              <CalendarCheck className="mr-2 h-4 w-4" aria-hidden="true" /> Book Appointment
+            </Link>
+            <a href={`tel:${site.phone.replace(/\s+/g, '')}`} className="btn btn-secondary w-full sm:w-auto">
+              <Phone className="mr-2 h-4 w-4" aria-hidden="true" /> Call Clinic
+            </a>
           </div>
         </div>
       </section>
