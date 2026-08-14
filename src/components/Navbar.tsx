@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Menu, X, Phone, Sun, Moon } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { site } from '../data/siteData'
 import { useTheme } from '../contexts/ThemeContext'
 
@@ -22,8 +22,7 @@ const groups = [
   { label: 'Contact', to: '/contact' },
 ]
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false)
+export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: boolean) => void }) {
   const { theme, toggle } = useTheme()
 
   // Close drawer on Escape
@@ -32,18 +31,18 @@ export default function Navbar() {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open])
+  }, [open, setOpen])
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 dark:border-slate-800 dark:bg-slate-950/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4">
-        {/* Row 1: logo + name (left) | hamburger (right) */}
-        <div className="flex items-center justify-between py-2.5">
+        {/* Row 1: logo + name (left) | hamburger + single primary CTA (right) */}
+        <div className="flex items-center justify-between py-1.5">
           <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Egesa Medical Clinic home">
-            <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-9 w-9 shrink-0 rounded-xl object-cover" />
+            <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-8 w-8 shrink-0 rounded-lg object-cover" />
             <div className="min-w-0">
-              <p className="truncate text-sm font-bold leading-tight text-slate-900 dark:text-white">Egesa Medical Clinic</p>
-              <p className="truncate text-xs text-slate-500 dark:text-slate-300">Our Healthcare We Trust</p>
+              <p className="truncate text-[15px] font-semibold leading-tight text-slate-900 dark:text-white sm:text-base">Egesa Medical Clinic</p>
+              <p className="truncate text-xs text-slate-500 dark:text-slate-300">{site.tagline}</p>
             </div>
           </Link>
 
@@ -56,8 +55,15 @@ export default function Navbar() {
             >
               {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </button>
+            {/* Single primary CTA — Book Appointment */}
+            <Link
+              to="/appointment"
+              className="hidden min-h-[40px] items-center rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-dark md:inline-flex"
+            >
+              Book Appointment
+            </Link>
             <button
-              onClick={() => setOpen((o) => !o)}
+              onClick={() => setOpen(!open)}
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
@@ -68,17 +74,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Row 2 (mobile only): Call Now | Book Appointment — single primary CTA hierarchy */}
-        <div className="flex gap-2 pb-2.5 md:hidden">
-          <a
-            href={`tel:${site.phone.replace(/ /g, '')}`}
-            className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
-          >
-            <Phone className="h-4 w-4" /> Call Now
-          </a>
+        {/* Mobile only: single primary CTA (Book Appointment) — no duplicate Call Now */}
+        <div className="pb-1.5 md:hidden">
           <Link
             to="/appointment"
-            className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-dark"
+            className="flex min-h-[40px] w-full items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-dark"
           >
             Book Appointment
           </Link>

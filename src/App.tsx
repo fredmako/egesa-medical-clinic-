@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import StickyFooterCTA from './components/StickyFooterCTA'
+import FloatingAssistant from './components/FloatingAssistant'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -15,12 +18,13 @@ import Privacy from './pages/Privacy'
 import ServicePolicy from './pages/ServicePolicy'
 
 export default function App() {
+  const [navOpen, setNavOpen] = useState(false)
   return (
     <HelmetProvider>
       <Router>
         <div className="flex min-h-screen flex-col overflow-x-hidden">
-          <Navbar />
-          <main className="flex-1">
+          <Navbar open={navOpen} setOpen={setNavOpen} />
+          <main className="flex-1 pb-20 md:pb-0">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -36,6 +40,8 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
+          <StickyFooterCTA />
+          <FloatingAssistant drawerOpen={navOpen} />
         </div>
       </Router>
     </HelmetProvider>

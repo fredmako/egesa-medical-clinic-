@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import {
   Stethoscope,
   CalendarCheck,
@@ -13,27 +12,6 @@ import {
   Star,
 } from 'lucide-react'
 import { site } from '../data/siteData'
-
-// Downloaded clinic images — continuous 2s crossfade carousel in the hero.
-const heroSlides = [
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.05 PM.jpeg', caption: 'Welcoming entrance & reception' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.08 PM (1).jpeg', caption: 'Modern consultation rooms' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.08 PM.jpeg', caption: 'Comfortable waiting area' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM (1).jpeg', caption: 'Laboratory & diagnostics' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM (2).jpeg', caption: 'Dedicated treatment bays' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.09 PM.jpeg', caption: 'Qualified clinical staff' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.10 PM.jpeg', caption: 'Family & child wellness' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.11 PM (1).jpeg', caption: 'Private consultation' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.11 PM.jpeg', caption: 'Patient care in action' },
-  { src: '/WhatsApp Image 2026-08-13 at 5.53.13 PM.jpeg', caption: 'Community health services' },
-]
-
-const stats = [
-  { label: 'Years of Service', value: '12+' },
-  { label: 'Patients Monthly', value: '2,400+' },
-  { label: 'Services Offered', value: '40+' },
-  { label: 'Clinics Weekly', value: '18' },
-]
 
 const services = [
   { icon: HeartPulse, title: 'Mother & Child Health', desc: 'Comprehensive maternal, newborn, and child wellness services.', to: '/services' },
@@ -72,78 +50,94 @@ const testimonials = [
 ]
 
 export default function Home() {
-  const [slide, setSlide] = useState(0)
-  useEffect(() => {
-    const id = setInterval(() => setSlide((i) => (i + 1) % heroSlides.length), 2000)
-    return () => clearInterval(id)
-  }, [])
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.15),transparent_45%)]" />
-        <div className="relative container pb-12 pt-8 md:pb-20 md:pt-14">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-secondary">
-                Egesa Medical Clinic
-              </p>
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-                Quality Healthcare For Every Family
-              </h1>
-              <p className="mt-4 text-lg text-slate-300">
-                {site.mission}
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/appointment" className="btn btn-primary justify-center">
-                  <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book Appointment
-                </Link>
-                <Link to="/services" className="btn justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
-                  Learn More
-                </Link>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-300">
-                <span className="flex items-center gap-2 whitespace-nowrap">
-                  <Phone className="h-4 w-4 text-secondary" />
-                  0707 223 209
-                </span>
-                <span className="flex items-center gap-2">
-                  <Stethoscope className="h-4 w-4 text-secondary" />
-                  Kisii, Kenya
-                </span>
-              </div>
-            </div>
+      {/* HERO — real clinic image, patient-focused copy, inline CTAs */}
+      <section className="relative overflow-hidden text-white">
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/hero-door-768.webp" type="image/webp" />
+          <source media="(max-width: 768px)" srcSet="/hero-door-768.jpg" type="image/jpeg" />
+          <source srcSet="/hero-door-1280.webp" type="image/webp" />
+          <source srcSet="/hero-door-1280.jpg" type="image/jpeg" />
+          <img
+            src="/hero-door-1280.jpg"
+            alt="Inside Egesa Medical Clinic — a clean, welcoming healthcare facility in Kisii"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </picture>
+        {/* 60–70% dark overlay for WCAG-compliant text contrast over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-900/60 to-slate-900/70" />
 
-            <div className="relative">
-              <div className="card overflow-hidden">
-                <div className="relative h-72 w-full md:h-80">
-                  {heroSlides.map((s, i) => (
-                    <img
-                      key={s.src}
-                      src={s.src}
-                      alt={s.caption}
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                      fetchPriority={i === 0 ? 'high' : 'low'}
-                      className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000"
-                      style={{ opacity: i === slide ? 1 : 0 }}
-                    />
-                  ))}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4">
-                    <p className="text-sm font-medium text-white drop-shadow">{heroSlides[slide].caption}</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4 p-5">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
-                      <p className="text-2xl font-extrabold text-slate-900 dark:text-white">{stat.value}</p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        <div className="relative container py-8 md:py-16">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-wider text-emerald-300">
+              {site.name}
+            </p>
+            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              Quality Healthcare For Every Family
+            </h1>
+            <p className="mt-4 text-base font-medium text-slate-100 sm:text-lg">
+              Professional, affordable and accessible healthcare services in Kisii. Consultations, laboratory services, pharmacy care and preventive healthcare under one trusted clinic.
+            </p>
+
+            <ul className="mt-5 flex flex-col gap-2 text-sm font-medium text-white sm:flex-row sm:gap-6">
+              <li>
+                <a
+                  href={`tel:${site.phone.replace(/ /g, '')}`}
+                  className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 ring-1 ring-white/20 hover:bg-white/20"
+                  aria-label={`Call Egesa Medical Clinic on ${site.phone}`}
+                >
+                  <Phone className="h-4 w-4 text-emerald-300" aria-hidden="true" />
+                  {site.phone}
+                </a>
+              </li>
+              <li className="inline-flex items-center gap-2 text-slate-100">
+                <Stethoscope className="h-4 w-4 text-emerald-300" aria-hidden="true" />
+                {site.location}
+              </li>
+            </ul>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/appointment"
+                className="btn btn-primary min-h-[48px] w-full justify-center sm:w-auto"
+                aria-label="Book an appointment at Egesa Medical Clinic"
+              >
+                <CalendarCheck className="mr-2 h-5 w-5" aria-hidden="true" />
+                Book Appointment
+              </Link>
+              <a
+                href={`tel:${site.phone.replace(/ /g, '')}`}
+                className="btn min-h-[48px] w-full justify-center border border-white/70 bg-transparent text-white hover:bg-white/10 sm:w-auto"
+                aria-label={`Call Egesa Medical Clinic now on ${site.phone}`}
+              >
+                <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
+                Call Now
+              </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* TRUST INDICATORS — immediately below hero */}
+      <section
+        className="border-b border-slate-200 bg-white py-6 dark:border-slate-800 dark:bg-slate-950"
+        aria-label="Why you can trust Egesa Medical Clinic"
+      >
+        <div className="container">
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {site.trustIndicators.map((t) => (
+              <li
+                key={t}
+                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs font-semibold leading-snug text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
+              >
+                <ShieldCheck className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

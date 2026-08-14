@@ -1,6 +1,6 @@
 export const site = {
   name: 'Egesa Medical Clinic',
-  tagline: 'Our Healthcare We Trust',
+  tagline: 'Quality Healthcare You Can Trust',
   mission:
     'To provide quality, promotive, preventive, curative healthcare which are available, accessible, affordable and sustainable to our people.',
   vision:
@@ -10,6 +10,15 @@ export const site = {
   altPhone2: '0717 773 048',
   email: 'ceoegesamedicalclinic@gmail.com',
   location: 'Kisii, Kenya',
+  heroImage: '/hero-door-1280.webp',
+  trustIndicators: [
+    'Licensed Medical Facility',
+    'Qualified Healthcare Professionals',
+    'Laboratory Services Available',
+    'Pharmacy Services Available',
+    'Preventive Care Programs',
+    'Patient-Centered Care',
+  ],
 } as const
 
 export const coreValues = [

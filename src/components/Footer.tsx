@@ -12,7 +12,7 @@ export default function Footer() {
               <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-9 w-9 rounded-lg object-cover" />
               <div>
                 <p className="text-sm font-bold text-white">Egesa Medical Clinic</p>
-                <p className="text-xs text-slate-400">Our Healthcare We Trust</p>
+                <p className="text-xs text-slate-400">{site.tagline}</p>
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
