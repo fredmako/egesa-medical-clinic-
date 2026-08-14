@@ -59,13 +59,13 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
           </Link>
 
           <div className="flex items-center gap-2">
-            {/* Desktop theme toggle */}
+            {/* Theme toggle — always visible (header row) */}
             <button
               onClick={toggle}
-              className="hidden min-h-[44px] items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 md:inline-flex"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
               aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
             >
-              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
             </button>
             <button
               onClick={() => setOpen(!open)}
@@ -174,16 +174,8 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
             </ul>
           </nav>
 
-          {/* Drawer footer: theme toggle + Call Now */}
+          {/* Drawer footer: Call Now */}
           <div className="space-y-2 border-t border-slate-200 p-3 dark:border-slate-800">
-            <button
-              onClick={toggle}
-              className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            >
-              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-              {theme === 'light' ? 'Dark mode' : 'Light mode'}
-            </button>
             <a
               href={`tel:${site.phone.replace(/ /g, '')}`}
               className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
