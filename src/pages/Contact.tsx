@@ -100,10 +100,10 @@ export default function Contact() {
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Clinic Photos</h3>
                 <div className="mt-3 grid grid-cols-2 gap-3">
-                  <img src="/clinic-waiting.jpg" alt="Clinic waiting area" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
-                  <img src="/clinic-room.jpg" alt="Medical consultation room" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
-                  <img src="/clinic-door.jpg" alt="Clinic entrance" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
-                  <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/clinic-waiting.jpg" alt="Clinic waiting area" loading="lazy" decoding="async" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/clinic-room.jpg" alt="Medical consultation room" loading="lazy" decoding="async" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/clinic-door.jpg" alt="Clinic entrance" loading="lazy" decoding="async" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/logo.jpg" alt="Egesa Medical Clinic logo" loading="lazy" decoding="async" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
                 </div>
               </div>
             </div>

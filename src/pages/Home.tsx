@@ -81,7 +81,7 @@ export default function Home() {
     <div>
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.15),transparent_45%)]" />
-        <div className="relative container py-16 md:py-28">
+        <div className="relative container pb-12 pt-8 md:pb-20 md:pt-14">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -93,17 +93,17 @@ export default function Home() {
               <p className="mt-4 text-lg text-slate-300">
                 {site.mission}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/appointment" className="btn btn-primary">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/appointment" className="btn btn-primary justify-center">
                   <CalendarCheck className="mr-2 h-4 w-4" />
                   Book Appointment
                 </Link>
-                <Link to="/contact" className="btn rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
-                  Contact Us
+                <Link to="/services" className="btn justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+                  Learn More
                 </Link>
               </div>
               <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-300">
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 whitespace-nowrap">
                   <Phone className="h-4 w-4 text-secondary" />
                   0707 223 209
                 </span>
@@ -122,6 +122,9 @@ export default function Home() {
                       key={s.src}
                       src={s.src}
                       alt={s.caption}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      fetchPriority={i === 0 ? 'high' : 'low'}
                       className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000"
                       style={{ opacity: i === slide ? 1 : 0 }}
                     />

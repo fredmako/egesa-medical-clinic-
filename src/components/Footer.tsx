@@ -52,15 +52,15 @@ export default function Footer() {
             <ul className="mt-3 space-y-2">
               <li className="flex items-start gap-2 text-sm text-slate-300">
                 <Phone className="mt-0.5 h-4 w-4 text-secondary" />
-                <a href={`tel:${site.phone.replace(/ /g,'')}`}>{site.phone}</a>
+                <a href={`tel:${site.phone.replace(/ /g,'')}`} className="whitespace-nowrap">{site.phone}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
                 <Phone className="mt-0.5 h-4 w-4 text-secondary" />
-                <a href={`tel:${site.altPhone1.replace(/ /g,'')}`}>{site.altPhone1}</a>
+                <a href={`tel:${site.altPhone1.replace(/ /g,'')}`} className="whitespace-nowrap">{site.altPhone1}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
                 <Phone className="mt-0.5 h-4 w-4 text-secondary" />
-                <a href={`tel:${site.altPhone2.replace(/ /g,'')}`}>{site.altPhone2}</a>
+                <a href={`tel:${site.altPhone2.replace(/ /g,'')}`} className="whitespace-nowrap">{site.altPhone2}</a>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-300">
                 <Mail className="mt-0.5 h-4 w-4 text-secondary" />
