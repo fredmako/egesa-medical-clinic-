@@ -97,7 +97,7 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
               </button>
               <button
                 onClick={() => setOpen(!open)}
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 sm:hidden"
                 aria-label={open ? 'Close menu' : 'Open menu'}
                 aria-expanded={open}
                 aria-controls="mobile-drawer"
@@ -108,8 +108,8 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
           </div>
         </div>
 
-        {/* Desktop horizontal nav with dropdowns */}
-        <nav className="hidden border-t border-slate-200 bg-white py-1.5 dark:border-slate-800 dark:bg-slate-950 md:block" aria-label="Primary">
+        {/* Desktop horizontal nav with dropdowns (shows in landscape / >=640px) */}
+        <nav className="hidden border-t border-slate-200 bg-white py-1.5 dark:border-slate-800 dark:bg-slate-950 sm:block" aria-label="Primary">
           <div className="mx-auto flex max-w-7xl items-center justify-center gap-1 px-4">
             {groups.map((g) =>
               g.children ? (
@@ -156,7 +156,7 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
       {/* Mobile drawer — portaled to body to escape any ancestor overflow clipping */}
       {createPortal(
         <div
-          className={`fixed inset-0 z-[100] md:hidden ${open ? '' : 'pointer-events-none'}`}
+          className={`fixed inset-0 z-[100] sm:hidden ${open ? '' : 'pointer-events-none'}`}
           aria-hidden={!open}
         >
           {/* Overlay (z-90) */}
