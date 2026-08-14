@@ -338,7 +338,7 @@ export default function Home() {
               Qualified, compassionate professionals dedicated to your family's health.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 justify-center gap-5 md:grid-cols-3 lg:grid-cols-6">
             {team.map((m) => (
               <div key={m.name} className="card flex flex-col items-center p-5 text-center">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-primary dark:bg-slate-800">
