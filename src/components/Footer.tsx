@@ -23,9 +23,12 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-white">Quick Links</h3>
             <ul className="mt-3 space-y-2">
-              {['About', 'Services', 'Laboratory', 'Contact', 'Appointment'].map((item) => (
+              {['About', 'Services', 'Laboratory', 'Contact', 'Appointment', 'Service Policy', 'Privacy Policy'].map((item) => (
                 <li key={item}>
-                  <Link to={`/${item.toLowerCase()}`} className="text-sm text-slate-300 hover:text-white">
+                  <Link
+                    to={item === 'Service Policy' ? '/service-policy' : item === 'Privacy Policy' ? '/privacy-policy' : `/${item.toLowerCase()}`}
+                    className="text-sm text-slate-300 hover:text-white"
+                  >
                     {item}
                   </Link>
                 </li>
@@ -83,6 +86,10 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-slate-800 pt-6 text-center text-xs text-slate-400">
           © {new Date().getFullYear()} Egesa Medical Clinic. All rights reserved.
+          <span className="mt-2 flex items-center justify-center gap-4">
+            <Link to="/service-policy" className="hover:text-white">Service Policy</Link>
+            <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+          </span>
         </div>
       </div>
     </footer>

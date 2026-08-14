@@ -11,6 +11,8 @@ import Rights from './pages/Rights'
 import FamilyPlanning from './pages/FamilyPlanning'
 import Contact from './pages/Contact'
 import Appointment from './pages/Appointment'
+import Privacy from './pages/Privacy'
+import ServicePolicy from './pages/ServicePolicy'
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
               <Route path="/family-planning" element={<FamilyPlanning />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/appointment" element={<Appointment />} />
+              <Route path="/privacy-policy" element={<Privacy />} />
+              <Route path="/service-policy" element={<ServicePolicy />} />
             </Routes>
           </main>
           <Footer />
