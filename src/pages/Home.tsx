@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Stethoscope,
@@ -9,6 +10,7 @@ import {
   Activity,
   ArrowRight,
   Phone,
+  MapPin,
   Star,
 } from 'lucide-react'
 import { site } from '../data/siteData'
@@ -50,27 +52,57 @@ const testimonials = [
 ]
 
 export default function Home() {
+  const heroSlides = [
+    { src: '/clinic-door.jpg', alt: 'Exterior view and entrance of Egesa Medical Clinic in Kisii' },
+    { src: '/clinic-waiting.jpg', alt: 'Reception and waiting area at Egesa Medical Clinic' },
+    { src: '/clinic-interior.jpg', alt: 'Interior consultation and laboratory space' },
+    { src: '/clinic-room.jpg', alt: 'Treatment and pharmacy room' },
+    { src: '/clinic-staff.jpg', alt: 'Egesa Medical Clinic healthcare team' },
+  ]
+  const n = heroSlides.length
+  const [slide, setSlide] = useState(0)
+  const [touchX, setTouchX] = useState<number | null>(null)
+
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % n), 5000)
+    return () => clearInterval(id)
+  }, [n])
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX === null) return
+    const dx = e.changedTouches[0].clientX - touchX
+    if (Math.abs(dx) > 40) setSlide((s) => (s + (dx < 0 ? 1 : -1) + n) % n)
+    setTouchX(null)
+  }
+
   return (
     <div>
-      {/* HERO — real clinic image, patient-focused copy, inline CTAs */}
-      <section className="relative overflow-hidden text-white">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/hero-door-768.webp" type="image/webp" />
-          <source media="(max-width: 768px)" srcSet="/hero-door-768.jpg" type="image/jpeg" />
-          <source srcSet="/hero-door-1280.webp" type="image/webp" />
-          <source srcSet="/hero-door-1280.jpg" type="image/jpeg" />
-          <img
-            src="/hero-door-1280.jpg"
-            alt="Inside Egesa Medical Clinic — a clean, welcoming healthcare facility in Kisii"
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </picture>
-        {/* 60–70% dark overlay for WCAG-compliant text contrast over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-900/60 to-slate-900/70" />
+      {/* HERO — rotating facility imagery carousel */}
+      <section
+        className="relative overflow-hidden text-white"
+        aria-label="Egesa Medical Clinic facilities"
+        onTouchStart={(e) => setTouchX(e.touches[0].clientX)}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* Slides (crossfade) */}
+        <div className="absolute inset-0">
+          {heroSlides.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              fetchPriority={i === 0 ? 'high' : 'low'}
+              className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000"
+              style={{ opacity: i === slide ? 1 : 0 }}
+            />
+          ))}
+        </div>
+        {/* 60% dark overlay for WCAG-compliant text contrast */}
+        <div className="absolute inset-0 bg-slate-900/60" />
 
-        <div className="relative container py-8 md:py-16">
+        <div className="relative container py-10 md:py-16">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-emerald-300">
               {site.name}
@@ -79,7 +111,7 @@ export default function Home() {
               Quality Healthcare For Every Family
             </h1>
             <p className="mt-4 text-base font-medium text-slate-100 sm:text-lg">
-              Professional, affordable and accessible healthcare services in Kisii. Consultations, laboratory services, pharmacy care and preventive healthcare under one trusted clinic.
+              Professional, affordable and accessible healthcare services in Kisii. Consultation, laboratory, pharmacy and preventive care under one trusted clinic.
             </p>
 
             <ul className="mt-5 flex flex-col gap-2 text-sm font-medium text-white sm:flex-row sm:gap-6">
@@ -94,7 +126,7 @@ export default function Home() {
                 </a>
               </li>
               <li className="inline-flex items-center gap-2 text-slate-100">
-                <Stethoscope className="h-4 w-4 text-emerald-300" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-emerald-300" aria-hidden="true" />
                 {site.location}
               </li>
             </ul>
@@ -118,6 +150,19 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Slide navigation dots */}
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2" role="tablist" aria-label="Hero image slides">
+          {heroSlides.map((s, i) => (
+            <button
+              key={s.src}
+              onClick={() => setSlide(i)}
+              aria-label={`Show slide ${i + 1}: ${s.alt}`}
+              aria-selected={i === slide}
+              className={`h-2.5 rounded-full transition-all ${i === slide ? 'w-6 bg-white' : 'w-2.5 bg-white/50'}`}
+            />
+          ))}
         </div>
       </section>
 

@@ -33,7 +33,7 @@ export default function FloatingAssistant({ drawerOpen = false }: Props) {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with Egesa Medical Clinic on WhatsApp"
-      className="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-black/20 ring-2 ring-white/30 transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 md:bottom-6 md:right-6"
+      className="fixed bottom-24 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-black/20 ring-2 ring-white/30 transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 md:hidden"
     >
       <MessageCircle className="h-6 w-6" aria-hidden="true" />
     </a>

@@ -1,29 +1,39 @@
-import { Link } from 'react-router-dom'
-import { Menu, X, Phone, Sun, Moon } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Menu, X, Phone, Sun, Moon, ChevronDown } from 'lucide-react'
 import { useEffect } from 'react'
 import { site } from '../data/siteData'
 import { useTheme } from '../contexts/ThemeContext'
 
-const groups = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
+type Item = { label: string; to: string }
+type Group = { label: string; to?: string; children?: Item[] }
+
+const groups: Group[] = [
+  { label: 'About Us', to: '/about' },
   {
     label: 'Services',
     children: [
-      { label: 'Laboratory', to: '/laboratory' },
-      { label: 'Screening Clinics', to: '/clinics' },
+      { label: 'General Consultation', to: '/services' },
+      { label: 'Laboratory Services', to: '/laboratory' },
+      { label: 'Pharmacy', to: '/services' },
+      { label: 'Mother & Child Health', to: '/services' },
       { label: 'Family Planning', to: '/family-planning' },
     ],
   },
   {
-    label: 'Patient Resources',
-    children: [{ label: 'Patient Rights', to: '/rights' }],
+    label: 'Patient Information',
+    children: [
+      { label: 'Patient Rights & Education', to: '/rights' },
+      { label: 'Service Policy', to: '/service-policy' },
+      { label: 'Privacy Policy', to: '/privacy-policy' },
+    ],
   },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Appointments', to: '/appointment' },
+  { label: 'Contact Us', to: '/contact' },
 ]
 
 export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: boolean) => void }) {
   const { theme, toggle } = useTheme()
+  const { pathname } = useLocation()
 
   // Close drawer on Escape
   useEffect(() => {
@@ -33,11 +43,13 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
     return () => window.removeEventListener('keydown', onKey)
   }, [open, setOpen])
 
+  const isActive = (to: string) => (to === '/' ? pathname === '/' : pathname.startsWith(to))
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 dark:border-slate-800 dark:bg-slate-950/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4">
-        {/* Row 1: logo + name (left) | hamburger + single primary CTA (right) */}
-        <div className="flex items-center justify-between py-1.5">
+        {/* Row 1: logo + name (left) | hamburger + theme toggle (right) */}
+        <div className="flex items-center justify-between py-2.5">
           <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Egesa Medical Clinic home">
             <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-9 w-9 shrink-0 rounded-lg object-cover" />
             <div className="min-w-0">
@@ -47,7 +59,7 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
           </Link>
 
           <div className="flex items-center gap-2">
-            {/* Desktop theme toggle (does not compete on mobile) */}
+            {/* Desktop theme toggle */}
             <button
               onClick={toggle}
               className="hidden min-h-[44px] items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 md:inline-flex"
@@ -55,13 +67,6 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
             >
               {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </button>
-            {/* Single primary CTA — Book Appointment */}
-            <Link
-              to="/appointment"
-              className="hidden min-h-[40px] items-center rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-dark md:inline-flex"
-            >
-              Book Appointment
-            </Link>
             <button
               onClick={() => setOpen(!open)}
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-200 p-2 text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
@@ -73,120 +78,121 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
             </button>
           </div>
         </div>
-
-        {/* Mobile only: single primary CTA (Book Appointment) — no duplicate Call Now */}
-        <div className="pb-1.5 md:hidden">
-          <Link
-            to="/appointment"
-            className="flex min-h-[40px] w-full items-center justify-center rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-dark"
-          >
-            Book Appointment
-          </Link>
-        </div>
       </div>
 
       {/* Desktop horizontal nav */}
       <nav className="hidden border-t border-slate-100 py-1.5 md:block dark:border-slate-800" aria-label="Primary">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-1 px-4">
-          {['Home', 'About', 'Services', 'Patient Resources', 'Contact'].map((label) => (
+          {groups.map((g) => (
             <Link
-              key={label}
-              to={label === 'Home' ? '/' : `/${label.toLowerCase().replace(/ /g, '-')}`}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+              key={g.label}
+              to={g.to ?? '/services'}
+              className={`rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                g.to && isActive(g.to)
+                  ? 'text-primary dark:text-primary'
+                  : 'text-slate-700 dark:text-slate-300 dark:hover:text-white'
+              }`}
             >
-              {label}
+              {g.label}
             </Link>
           ))}
-          <Link
-            to="/appointment"
-            className="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
-          >
-            Book Appointment
-          </Link>
         </div>
       </nav>
 
       {/* Mobile drawer */}
-      {open && (
-        <>
-          <div
-            className="fixed inset-0 z-40 bg-black/40 md:hidden"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-          <div
-            id="mobile-drawer"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navigation menu"
-            className="fixed inset-y-0 right-0 z-50 flex w-4/5 max-w-xs flex-col bg-white shadow-xl dark:bg-slate-950 md:hidden"
-          >
-            <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800">
-              <span className="text-sm font-bold text-slate-900 dark:text-white">Menu</span>
-              <button
-                onClick={() => setOpen(false)}
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-
-            <nav className="flex-1 overflow-y-auto px-3 py-3" aria-label="Mobile">
-              <ul className="space-y-1">
-                {groups.map((g) => (
-                  <li key={g.label}>
-                    {g.children ? (
-                      <div className="py-1">
-                        <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{g.label}</p>
-                        <ul className="space-y-1">
-                          {g.children.map((c) => (
-                            <li key={c.to}>
-                              <Link
-                                to={c.to}
-                                onClick={() => setOpen(false)}
-                                className="block min-h-[44px] rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-                              >
-                                {c.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <Link
-                        to={g.to}
-                        onClick={() => setOpen(false)}
-                        className="flex min-h-[44px] items-center rounded-lg px-3 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800"
-                      >
-                        {g.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Drawer footer: theme toggle + actions (no longer competing with header CTAs) */}
-            <div className="space-y-2 border-t border-slate-200 p-3 dark:border-slate-800">
-              <button
-                onClick={toggle}
-                className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-              >
-                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-                {theme === 'light' ? 'Dark mode' : 'Light mode'}
-              </button>
-              <a
-                href={`tel:${site.phone.replace(/ /g, '')}`}
-                className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
-              >
-                <Phone className="h-4 w-4" /> Call Now
-              </a>
-            </div>
+      <div
+        className={`fixed inset-0 z-[60] md:hidden ${open ? '' : 'pointer-events-none'}`}
+        aria-hidden={!open}
+      >
+        {/* backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
+            open ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setOpen(false)}
+        />
+        {/* slide-out panel */}
+        <div
+          id="mobile-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          className={`absolute inset-y-0 right-0 flex w-4/5 max-w-xs flex-col bg-white shadow-xl transition-transform duration-300 ease-out dark:bg-slate-950 ${
+            open ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+            <span className="text-sm font-bold text-slate-900 dark:text-white">Menu</span>
+            <button
+              onClick={() => setOpen(false)}
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
           </div>
-        </>
-      )}
+
+          <nav className="flex-1 overflow-y-auto px-3 py-3" aria-label="Mobile">
+            <ul className="space-y-1">
+              {groups.map((g) => (
+                <li key={g.label}>
+                  {g.children ? (
+                    <details className="group py-1">
+                      <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800">
+                        {g.label}
+                        <ChevronDown className="h-4 w-4 text-slate-400 transition-transform group-open:rotate-180" />
+                      </summary>
+                      <ul className="space-y-1 pb-1 pl-3">
+                        {g.children.map((c) => (
+                          <li key={c.to + c.label}>
+                            <Link
+                              to={c.to}
+                              onClick={() => setOpen(false)}
+                              className={`block min-h-[44px] rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                                isActive(c.to) ? 'text-primary' : 'text-slate-600 dark:text-slate-300'
+                              }`}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : (
+                    <Link
+                      to={g.to as string}
+                      onClick={() => setOpen(false)}
+                      className={`flex min-h-[44px] items-center rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                        g.to && isActive(g.to) ? 'bg-red-50 text-primary dark:bg-slate-800' : 'text-slate-800 dark:text-slate-100'
+                      }`}
+                    >
+                      {g.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Drawer footer: theme toggle + Call Now */}
+          <div className="space-y-2 border-t border-slate-200 p-3 dark:border-slate-800">
+            <button
+              onClick={toggle}
+              className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              {theme === 'light' ? 'Dark mode' : 'Light mode'}
+            </button>
+            <a
+              href={`tel:${site.phone.replace(/ /g, '')}`}
+              className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800"
+            >
+              <Phone className="h-4 w-4" /> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
   )
 }
