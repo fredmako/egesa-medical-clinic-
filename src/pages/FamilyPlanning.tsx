@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Heart, ArrowRight, ShieldCheck } from 'lucide-react'
 import { fpEducation } from '../data/siteData'
 
@@ -16,6 +17,13 @@ const sections = [
 export default function FamilyPlanning() {
   return (
     <div>
+      <Helmet>
+        <title>Family Planning | Methods, Counselling & Education</title>
+        <meta name="description" content="Family planning at Egesa Medical Clinic — pills, implants, IUCD, injectables, condoms and counselling. Free, confidential education in Kisii." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/family-planning" />
+        <meta property="og:title" content="Family Planning | Methods, Counselling & Education" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/family-planning" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <h1 className="text-4xl font-bold md:text-5xl">Family Planning Education</h1>

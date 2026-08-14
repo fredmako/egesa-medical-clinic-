@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { CalendarCheck, UserRound, MessageSquare, ArrowRight } from 'lucide-react'
 
 export default function Appointment() {
@@ -6,6 +7,13 @@ export default function Appointment() {
 
   return (
     <div>
+      <Helmet>
+        <title>Book an Appointment | Egesa Medical Clinic</title>
+        <meta name="description" content="Book an appointment at Egesa Medical Clinic in Kisii. Online booking, walk-ins and WhatsApp reminders available." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/appointment" />
+        <meta property="og:title" content="Book an Appointment | Egesa Medical Clinic" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/appointment" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <h1 className="text-4xl font-bold md:text-5xl">Book an Appointment</h1>

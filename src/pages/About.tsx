@@ -1,4 +1,5 @@
 import { HeartPulse, Eye, ShieldCheck, Users, Award, Handshake } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { site, coreValues } from '../data/siteData'
 
 const highlights = [
@@ -13,6 +14,13 @@ const highlights = [
 export default function About() {
   return (
     <div>
+      <Helmet>
+        <title>About Egesa Medical Clinic | Mission, Vision & Values</title>
+        <meta name="description" content="Learn about Egesa Medical Clinic in Kisii — our mission, vision and core values of quality, compassionate, affordable healthcare." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/about" />
+        <meta property="og:title" content="About Egesa Medical Clinic | Mission, Vision & Values" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/about" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <h1 className="text-4xl font-bold md:text-5xl">About Us</h1>

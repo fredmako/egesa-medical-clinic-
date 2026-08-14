@@ -1,14 +1,23 @@
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { site } from '../data/siteData'
 
 export default function Contact() {
   return (
     <div>
-      <section className="section bg-white">
+      <Helmet>
+        <title>Contact Us | Egesa Medical Clinic — Kisii, Kenya</title>
+        <meta name="description" content="Contact Egesa Medical Clinic in Kisii, Kenya. Call 0707 223 209, WhatsApp, or visit us. Open Mon–Fri 8AM–5PM, Sat 9AM–1PM." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/contact" />
+        <meta property="og:title" content="Contact Us | Egesa Medical Clinic — Kisii, Kenya" />
+        <meta property="og:description" content="Call 0707 223 209 or WhatsApp Egesa Medical Clinic in Kisii. Book appointments and get directions." />
+        <meta property="og:url" content="https://egesamedicalclinic.com/contact" />
+      </Helmet>
+      <section className="section bg-white dark:bg-slate-950">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold md:text-5xl">Contact Us</h1>
-            <p className="mt-3 text-slate-600">
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">Contact Us</h1>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">
               We are here to help. Reach out to schedule appointments or ask questions.
             </p>
           </div>
@@ -19,19 +28,19 @@ export default function Contact() {
                 <div className="card flex items-start gap-4 p-5">
                   <Phone className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">Phone</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">Phone</p>
                     <div className="mt-1 flex flex-col gap-1">
-                      <a href={`tel:${site.phone.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.phone}</a>
-                      <a href={`tel:${site.altPhone1.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.altPhone1}</a>
-                      <a href={`tel:${site.altPhone2.replace(/ /g,'')}`} className="text-sm text-slate-700 hover:text-primary">{site.altPhone2}</a>
+                      <a href={`tel:${site.phone.replace(/ /g, '')}`} className="text-sm text-slate-700 hover:text-primary dark:text-slate-300">{site.phone}</a>
+                      <a href={`tel:${site.altPhone1.replace(/ /g, '')}`} className="text-sm text-slate-700 hover:text-primary dark:text-slate-300">{site.altPhone1}</a>
+                      <a href={`tel:${site.altPhone2.replace(/ /g, '')}`} className="text-sm text-slate-700 hover:text-primary dark:text-slate-300">{site.altPhone2}</a>
                     </div>
                   </div>
                 </div>
                 <div className="card flex items-start gap-4 p-5">
                   <Mail className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">Email</p>
-                    <a href="mailto:ceoegesamedicalclinic@gmail.com" className="text-sm text-slate-700 hover:text-primary">
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">Email</p>
+                    <a href="mailto:ceoegesamedicalclinic@gmail.com" className="text-sm text-slate-700 hover:text-primary dark:text-slate-300">
                       {site.email}
                     </a>
                   </div>
@@ -39,16 +48,16 @@ export default function Contact() {
                 <div className="card flex items-start gap-4 p-5">
                   <MapPin className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">Location</p>
-                    <p className="text-sm text-slate-700">{site.location}</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">Location</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-300">{site.location}</p>
                   </div>
                 </div>
                 <div className="card flex items-start gap-4 p-5">
                   <Clock className="mt-0.5 h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">Opening Hours</p>
-                    <p className="text-sm text-slate-700">Mon–Fri: 8AM – 5PM</p>
-                    <p className="text-sm text-slate-700">Sat: 9AM – 1PM</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">Opening Hours</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-300">Mon–Fri: 8AM – 5PM</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-300">Sat: 9AM – 1PM</p>
                   </div>
                 </div>
               </div>
@@ -78,23 +87,23 @@ export default function Contact() {
               </div>
 
               <form className="card mt-6 p-6">
-                <h3 className="text-lg font-semibold">Send a Message</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Send a Message</h3>
                 <div className="mt-4 grid grid-cols-1 gap-4">
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Full Name" />
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Phone Number" />
-                  <input className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Email" />
-                  <textarea rows={5} className="w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="Your Message" />
+                  <input className="w-full rounded-lg border border-slate-300 bg-white p-3 text-sm text-slate-900 outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Full Name" />
+                  <input className="w-full rounded-lg border border-slate-300 bg-white p-3 text-sm text-slate-900 outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Phone Number" />
+                  <input className="w-full rounded-lg border border-slate-300 bg-white p-3 text-sm text-slate-900 outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Email" />
+                  <textarea rows={5} className="w-full rounded-lg border border-slate-300 bg-white p-3 text-sm text-slate-900 outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Your Message" />
                   <button type="button" className="btn btn-primary w-full">Send Message</button>
                 </div>
               </form>
 
               <div className="mt-6">
-                <h3 className="text-lg font-semibold">Clinic Photos</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Clinic Photos</h3>
                 <div className="mt-3 grid grid-cols-2 gap-3">
-                  <img src="/clinic-waiting.jpg" alt="Clinic waiting area" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
-                  <img src="/clinic-room.jpg" alt="Medical consultation room" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
-                  <img src="/clinic-door.jpg" alt="Clinic entrance" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
-                  <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="rounded-xl border border-slate-200 object-cover h-32 w-full" />
+                  <img src="/clinic-waiting.jpg" alt="Clinic waiting area" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/clinic-room.jpg" alt="Medical consultation room" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/clinic-door.jpg" alt="Clinic entrance" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
+                  <img src="/logo.jpg" alt="Egesa Medical Clinic logo" className="h-32 w-full rounded-xl border border-slate-200 object-cover dark:border-slate-800" />
                 </div>
               </div>
             </div>

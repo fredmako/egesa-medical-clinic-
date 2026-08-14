@@ -1,9 +1,17 @@
 import { ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { patientRights } from '../data/siteData'
 
 export default function Rights() {
   return (
     <div>
+      <Helmet>
+        <title>Patient Rights | Your Care, Your Choices</title>
+        <meta name="description" content="Know your patient rights at Egesa Medical Clinic — respectful care, privacy, informed consent, continuity of care and grievance resolution." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/rights" />
+        <meta property="og:title" content="Patient Rights | Your Care, Your Choices" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/rights" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <div className="flex items-center gap-3">

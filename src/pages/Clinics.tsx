@@ -1,4 +1,5 @@
 import { Calendar, Clock, Stethoscope } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { specialSchedule } from '../data/siteData'
 
 const dayColors: Record<string, string> = {
@@ -14,6 +15,13 @@ const dayColors: Record<string, string> = {
 export default function Clinics() {
   return (
     <div>
+      <Helmet>
+        <title>Special Clinics | Chronic, Dental, Eye & STI Schedules</title>
+        <meta name="description" content="Weekly special clinics at Egesa Medical Clinic — diabetic, hypertension, dental, eye, STI and mother & child health. See the full schedule." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/clinics" />
+        <meta property="og:title" content="Special Clinics | Chronic, Dental, Eye & STI Schedules" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/clinics" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <h1 className="text-4xl font-bold md:text-5xl">General Medical Screening Clinics</h1>

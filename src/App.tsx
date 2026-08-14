@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -13,24 +14,26 @@ import Appointment from './pages/Appointment'
 
 export default function App() {
   return (
-    <Router>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/laboratory" element={<Laboratory />} />
-            <Route path="/clinics" element={<Clinics />} />
-            <Route path="/rights" element={<Rights />} />
-            <Route path="/family-planning" element={<FamilyPlanning />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/appointment" element={<Appointment />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/laboratory" element={<Laboratory />} />
+              <Route path="/clinics" element={<Clinics />} />
+              <Route path="/rights" element={<Rights />} />
+              <Route path="/family-planning" element={<FamilyPlanning />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/appointment" element={<Appointment />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   )
 }

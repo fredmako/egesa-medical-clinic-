@@ -1,4 +1,5 @@
 import { FlaskConical, Clock, Search, X } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { labServices } from '../data/siteData'
 
@@ -11,6 +12,13 @@ export default function Laboratory() {
 
   return (
     <div>
+      <Helmet>
+        <title>Laboratory & Diagnostics | Fast, Affordable Tests</title>
+        <meta name="description" content="Egesa Medical Clinic laboratory — malaria, widal, urinalysis, haemoglobin, blood grouping, HIV and more. Same-day results at affordable fees in Kisii." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/laboratory" />
+        <meta property="og:title" content="Laboratory & Diagnostics | Fast, Affordable Tests" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/laboratory" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

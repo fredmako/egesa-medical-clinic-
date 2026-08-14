@@ -4,6 +4,7 @@ import {
   Heart,
   ArrowRight,
 } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { motherChildServices, familyPlanningServices } from '../data/siteData'
 
 const departments = [
@@ -15,6 +16,13 @@ const departments = [
 export default function Services() {
   return (
     <div>
+      <Helmet>
+        <title>Our Services | Mother & Child, Family Planning, Labs</title>
+        <meta name="description" content="Explore Egesa Medical Clinic services — mother & child health, family planning, general screening clinics, laboratory and patient rights in Kisii." />
+        <link rel="canonical" href="https://egesamedicalclinic.com/services" />
+        <meta property="og:title" content="Our Services | Mother & Child, Family Planning, Labs" />
+        <meta property="og:url" content="https://egesamedicalclinic.com/services" />
+      </Helmet>
       <section className="bg-slate-900 py-16 md:py-24">
         <div className="container">
           <h1 className="text-4xl font-bold md:text-5xl">Services</h1>
