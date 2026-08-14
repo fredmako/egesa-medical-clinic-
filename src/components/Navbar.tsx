@@ -164,12 +164,9 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
               {groups.map((g) => (
                 <li key={g.label}>
                   {g.children ? (
-                    <details className="group py-1">
-                      <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-slate-800">
-                        {g.label}
-                        <ChevronDown className="h-4 w-4 text-slate-400 transition-transform group-open:rotate-180" />
-                      </summary>
-                      <ul className="space-y-1 pb-1 pl-3">
+                    <div className="py-1">
+                      <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{g.label}</p>
+                      <ul className="space-y-1">
                         {g.children.map((c) => (
                           <li key={c.to + c.label}>
                             <Link
@@ -184,7 +181,7 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
                           </li>
                         ))}
                       </ul>
-                    </details>
+                    </div>
                   ) : (
                     <Link
                       to={g.to as string}
