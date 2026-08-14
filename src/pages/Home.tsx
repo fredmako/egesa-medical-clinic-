@@ -54,10 +54,12 @@ const testimonials = [
 export default function Home() {
   const heroSlides = [
     { src: '/clinic-door.jpg', alt: 'Exterior view and entrance of Egesa Medical Clinic in Kisii' },
+    { src: '/hero-door-1280.jpg', alt: 'Frontage of Egesa Medical Clinic' },
     { src: '/clinic-waiting.jpg', alt: 'Reception and waiting area at Egesa Medical Clinic' },
     { src: '/clinic-interior.jpg', alt: 'Interior consultation and laboratory space' },
     { src: '/clinic-room.jpg', alt: 'Treatment and pharmacy room' },
     { src: '/clinic-staff.jpg', alt: 'Egesa Medical Clinic healthcare team' },
+    { src: '/hero.png', alt: 'Egesa Medical Clinic facility' },
   ]
   const n = heroSlides.length
   const [slide, setSlide] = useState(0)
