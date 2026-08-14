@@ -80,22 +80,49 @@ export default function Navbar({ open, setOpen }: { open: boolean; setOpen: (v: 
         </div>
       </div>
 
-      {/* Desktop horizontal nav */}
-      <nav className="hidden border-t border-slate-100 py-1.5 md:block dark:border-slate-800" aria-label="Primary">
+      {/* Desktop horizontal nav with dropdowns */}
+      <nav className="hidden border-t border-slate-200 bg-white py-1.5 dark:border-slate-800 dark:bg-slate-950 md:block" aria-label="Primary">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-1 px-4">
-          {groups.map((g) => (
-            <Link
-              key={g.label}
-              to={g.to ?? '/services'}
-              className={`rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
-                g.to && isActive(g.to)
-                  ? 'text-primary dark:text-primary'
-                  : 'text-slate-700 dark:text-slate-300 dark:hover:text-white'
-              }`}
-            >
-              {g.label}
-            </Link>
-          ))}
+          {groups.map((g) =>
+            g.children ? (
+              <div key={g.label} className="group relative">
+                <button
+                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {g.label}
+                  <ChevronDown className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                </button>
+                <div className="invisible absolute left-0 top-full z-50 w-60 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:opacity-100 focus-within:visible focus-within:opacity-100 dark:border-slate-800 dark:bg-slate-900">
+                  {g.children.map((c) => (
+                    <Link
+                      key={c.to + c.label}
+                      to={c.to}
+                      onClick={() => setOpen(false)}
+                      className={`block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                        isActive(c.to) ? 'text-primary' : 'text-slate-700 dark:text-slate-200'
+                      }`}
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={g.label}
+                to={g.to as string}
+                className={`rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${
+                  g.to && isActive(g.to)
+                    ? 'text-primary dark:text-primary'
+                    : 'text-slate-700 dark:text-slate-300 dark:hover:text-white'
+                }`}
+              >
+                {g.label}
+              </Link>
+            )
+          )}
         </div>
       </nav>
 
