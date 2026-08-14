@@ -37,12 +37,10 @@ const treatments = [
 ]
 
 const team = [
-  { name: 'Dr. Grace Aoko', role: 'Medical Superintendent', icon: Stethoscope },
-  { name: 'Nurse Mercy Kerubo', role: 'Maternal & Child Health', icon: HeartPulse },
-  { name: 'Lab. Tech Brian Ondiek', role: 'Laboratory Sciences', icon: FlaskConical },
-  { name: 'Counselor Kevin Mose', role: 'Family Planning & HIV', icon: Users },
-  { name: 'Dr. Fanuel Nyamweya', role: 'General Practice', icon: Activity },
-  { name: 'Nurse Alice Kemunto', role: 'Patient Care Coordinator', icon: ShieldCheck },
+  { name: 'Johannes Masamba', role: 'Chief Executive Officer', icon: Stethoscope },
+  { name: 'Caroline Njoki', role: 'Nurse', icon: HeartPulse },
+  { name: 'Betty', role: 'Laboratory', icon: FlaskConical },
+  { name: 'Fredrick Makori', role: 'Information Technology', icon: Activity },
 ]
 
 const testimonials = [
@@ -184,8 +182,8 @@ export default function Home() {
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             {/* Small SHA accreditation badge */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
-              <img src="/sha-logo.png" alt="Social Health Authority (SHA) Kenya" className="h-5 w-auto rounded bg-slate-900 p-0.5" width={422} height={90} />
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+              <img src="/sha-logo-transparent.png" alt="Social Health Authority (SHA) Kenya" className="h-7 w-auto" width={422} height={90} />
               <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">SHA Accredited</span>
             </div>
 
