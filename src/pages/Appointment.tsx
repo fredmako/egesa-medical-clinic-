@@ -1,9 +1,69 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { CalendarCheck, UserRound, MessageSquare, ArrowRight } from 'lucide-react'
+import { CalendarCheck, UserRound, MessageSquare, ArrowRight, Loader2 } from 'lucide-react'
+
+const SERVICES = [
+  'Mother & Child Health',
+  'Family Planning',
+  'Medical Clinic',
+  'Surgical Clinic',
+  'Dental Clinic',
+  'Eye Clinic',
+  'Ear Clinic',
+  'Laboratory',
+  'Other',
+]
+
+type FormState = {
+  name: string
+  phone: string
+  service: string
+  date: string
+  time: string
+  notes: string
+}
 
 export default function Appointment() {
+  const [form, setForm] = useState<FormState>({
+    name: '',
+    phone: '',
+    service: SERVICES[0],
+    date: '',
+    time: '',
+    notes: '',
+  })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const update = (partial: Partial<FormState>) =>
+    setForm((prev) => ({ ...prev, ...partial }))
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSending(true)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/appointment', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await res.json().catch(() => ({ ok: false, error: 'Invalid server response.' }))
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || 'Failed to submit booking request.')
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to submit booking request.'
+      setError(message)
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <div>
@@ -38,50 +98,83 @@ export default function Appointment() {
                   </p>
                 </div>
               ) : (
-                <form
-                  className="card mt-6 p-6"
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                    setSubmitted(true)
-                  }}
-                >
+                <form className="card mt-6 p-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Full Name</label>
-                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="John Doe" />
+                      <input
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        placeholder="John Doe"
+                        value={form.name}
+                        onChange={(e) => update({ name: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Phone Number</label>
-                      <input className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" placeholder="07XX XXX XXX" />
+                      <input
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        placeholder="07XX XXX XXX"
+                        value={form.phone}
+                        onChange={(e) => update({ phone: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Service / Department</label>
-                      <select className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary">
-                        <option>Mother & Child Health</option>
-                        <option>Family Planning</option>
-                        <option>Medical Clinic</option>
-                        <option>Surgical Clinic</option>
-                        <option>Dental Clinic</option>
-                        <option>Eye Clinic</option>
-                        <option>Ear Clinic</option>
-                        <option>Laboratory</option>
-                        <option>Other</option>
+                      <select
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        value={form.service}
+                        onChange={(e) => update({ service: e.target.value })}
+                      >
+                        {SERVICES.map((item) => (
+                          <option key={item}>{item}</option>
+                        ))}
                       </select>
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Preferred Date</label>
-                      <input type="date" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
+                      <input
+                        type="date"
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        value={form.date}
+                        onChange={(e) => update({ date: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Preferred Time</label>
-                      <input type="time" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
+                      <input
+                        type="time"
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        value={form.time}
+                        onChange={(e) => update({ time: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Notes (optional)</label>
-                      <textarea rows={3} className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary" />
+                      <textarea
+                        rows={3}
+                        className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm outline-none focus:border-primary"
+                        value={form.notes}
+                        onChange={(e) => update({ notes: e.target.value })}
+                      />
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                      Submit Booking Request <ArrowRight className="ml-2 h-4 w-4" />
+                    {error ? (
+                      <p className="text-sm text-red-600">{error}</p>
+                    ) : null}
+                    <button type="submit" className="btn btn-primary" disabled={sending}>
+                      {sending ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit Booking Request <ArrowRight className="ml-2 h-4 w-4" />
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>
