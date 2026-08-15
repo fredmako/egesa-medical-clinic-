@@ -38,7 +38,6 @@ const treatments = [
 
 const team = [
   { name: 'Johannes Masamba', role: 'Chief Executive Officer', icon: Stethoscope },
-  { name: 'Caroline Njoki', role: 'Nurse', icon: HeartPulse },
   { name: 'Betty', role: 'Laboratory', icon: FlaskConical },
   { name: 'Fredrick Makori', role: 'Information Technology', icon: Activity },
 ]
